@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{37c7b5aa-086d-4067-acf2-6c94d9c3a113}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{1f7eb0a9-f10c-4285-aa75-c364bd16d71f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BitmapSaver.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FakeCommon.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FakeD3D.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FakeD3DDevice.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FakeDirectDraw.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FakeMaterial.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FakePrimarySurface.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FakeVidSurface.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SafeWrite.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TexOverride.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="PostProcess.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BitmapSaver.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="giflib-4.1.6\lib\dgif_lib.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="FakeD3D.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="FakeD3DDevice.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="FakeDirectDraw.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="FakeMaterial.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="FakePrimarySurface.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="FakeVidSurface.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="giflib-4.1.6\lib\gif_err.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="giflib-4.1.6\lib\gifalloc.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="SafeWrite.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="TexOverride.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Widescreen.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="PostProcess.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="exports.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="version.rc" />
+  </ItemGroup>
+</Project>
