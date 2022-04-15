@@ -162,7 +162,11 @@ bool _stdcall DllMain(HANDLE hDllHandle, DWORD dwReason, LPVOID  lpreserved) {
 		gWidth=0;
 		gHeight=0;
 
-		FILE* cam=fopen("cam.cfg", "r");
+		char str[MAX_PATH];
+
+		if (!GetPrivateProfileString("Main", "GameConfig", "", str, MAX_PATH, ".\\ddfix.ini"))
+			strcpy_s(str, "cam.cfg");
+		FILE* cam=fopen(str, "r");
 		if(cam) {
 			char buf[256];
 			while(fgets(buf,256,cam)) {
@@ -177,7 +181,7 @@ bool _stdcall DllMain(HANDLE hDllHandle, DWORD dwReason, LPVOID  lpreserved) {
 		}
 
 		if(gWidth<=640 || gHeight<=480) {
-			MessageBox(0, "Invalid resolution in cam.cfg.", "Error", MB_OK);
+			MessageBox(0, "Invalid resolution in config.", "Error", MB_OK);
 			ExitProcess(1);
 		}
 
@@ -188,7 +192,6 @@ bool _stdcall DllMain(HANDLE hDllHandle, DWORD dwReason, LPVOID  lpreserved) {
 			FUMode=1;
 		FUMode=GetPrivateProfileInt("Main", "FUMode", FUMode, ".\\ddfix.ini");
 
-		char str[MAX_PATH];
 		EnableMissionIni=GetPrivateProfileInt("Main", "EnableMissionIni", 1, ".\\ddfix.ini");
 		if(SafeMode || GetPrivateProfileInt("Main", "MultiCoreFix", 1, ".\\ddfix.ini")) {
 			HANDLE process=GetCurrentProcess();
