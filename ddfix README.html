@@ -1,0 +1,257 @@
+<html><body>
+<center>
+
+<table border="0" width="780">
+<tr><td>
+
+<p>&nbsp;</p>
+
+<center>
+<h1>ddfix</h1>
+<h2>Play Thief 2 on modern hardware in high resolution and true color</h2>
+</center>
+
+<p>&nbsp;</p>
+
+<p>
+Last updated 19.1.2014<br>
+jere.leppanen@gmail.com<br>
+<a href="https://www.ttlg.com/forums/member.php?u=13927">jermi</a> at <a href="https://ttlg.com/forums">ttlg.com/forums</a><br>
+</p>
+
+<p>
+Based on <a href="http://timeslip.chorrol.com/current/ddfixSource.7z">ddfix 1.3.11</a> by <a href="https://timeslip.users.sourceforge.net/">Timeslip</a>. The latest source and binary packages are available at <a href="https://github.com/Xanfre/ddfix">https://github.com/Xanfre/ddfix</a>. See instructions and changelog for 1.3.11 and earlier versions in <a href="./ddfix 1.3.11 readme.txt">ddfix 1.3.11 readme.txt</a>.
+</p>
+
+<p>
+Supported games: TG v1.37, T2 v1.18, SS2 v2.3, FU3 v1.9.
+</p>
+
+<p>
+Supported editors: Dromed v1.37, Dromed2 v1.18, ShockEd v2.12.
+</p>
+
+<p>Need help? Start <a href="https://www.ttlg.com/forums/showthread.php?t=121449">here</a>.</p>
+
+<h2>Changelog</h2>
+
+<h3>ddfix 1.5.13</h3>
+
+<ul>
+<li>Flight Unlimited 3 support.</li>
+<ul>
+<li>Support for arbitrary resolutions (up to 2048x2048, 1024x768 is the smallest that works).</li>
+<li>Overlay flickering fixed.</li>
+<li>Pointer trailing removed.</li>
+<li>Clean overlay transparency edges.</li>
+<li>New sun texture.</li>
+<li>New lens flare implementation and textures.</li>
+<li>Aeroplane shadow partially fixed.</li>
+<li>Fixed post processing and set reasonable defaults specifically for FU3.</li>
+<li>Fixed stars.</li>
+<li>Installation instructions:</li>
+<ol>
+<li>Extract the package into the FU3 installation directory.</li>
+<li>Since FU3 doesn't have it, create a file named "cam.cfg" with this content (substitute whatever resolution you like):
+<pre>game_screen_size 1920 1080</pre></li>
+<li>If you want, you can enable post processing by editing ddfix.ini and setting
+<pre>[PostProcessing]
+Enable=1</pre></li>
+<li>Either replace the game exe with a prepatched exe or patch your current game exe by opening it with a hex editor and replacing the first and only the first occurence of the ascii string "ddraw.dll" with "ddfix.dll".</li>
+<li>Start the game.</li>
+<li>If you get to the menu (fingers crossed), set the resolution to 1024x768 in the graphics options, unless already set.</li>
+<li>Start the engine, release the brakes, you know the rest.</li>
+</ol>
+</ul>
+<li>Fixed normal (non-dynamic) gamma control.</li>
+</ul>
+
+<h3>ddfix 1.5.12</h3>
+
+<ul>
+<li>Removed white line at the top and left edges of the screen when using bloom and anti-aliasing.</li>
+<li>Fixed expanding minimap and notifications in SS2 when using ModulateShift.</li>
+<li>Fixed a rare crash during replacement texture loading.</li>
+<li>Texture auto replacement support for SS2 and ShockEd game mode.</li>
+</ul>
+
+<h3>ddfix 1.5.11</h3>
+
+<ul>
+<li>New parameter ModulateShift. D3DTOP_MODULATE is replaced by D3DTOP_MODULATE2X or D3DTOP_MODULATE4X. Effectively, levels are multiplied by 2**ModulateShift without any posterization.</li>
+<li>Dynamic gamma.</li>
+<li>Dynamic bloom threshold.</li>
+<li>New parameter FlipVSync.</li>
+<li>Fixed scouting orb aspect ratio.</li>
+<li>Widescreen memory patches now use SafeWrites, which may behave better in some systems.</li>
+<li>New parameter SafeMode.</li>
+<li>Max sky intensity in mis files is ignored. No need to run t2skies.exe / t2stars.exe for FMs anymore.</li>
+<li>Default for TripleBuffer changed from 0 to 1.</li>
+<li>Default for ZBufferBitDepth changed from 16 to 24.</li>
+</ul>
+
+<h3>ddfix 1.5.10</h3>
+
+<ul>
+<li>Removed the useless alpha channel from the screenshots.</li>
+<li>Even more improved limb rendering fix for custom limb models with self-illuminating materials. T2 only.</li>
+<li>LimbZBufferFix now works also in "Masks".</li>
+<li>Fixed a problem with water transparency. New parameter WaterAlphaFix.</li>
+<li>Fog for "Framed" is no longer forced by default.</li>
+<li>The default for BloomUI is now 0 for the game executables and 1 for the editors, because BloomUI=0 doesn't work with the editors.</li>
+</ul>
+
+<h3>ddfix 1.5.9</h3>
+
+<ul>
+<li>Fixed bloom for arrows when BloomUI=0.</li>
+<li>Improved limb rendering fix for custom limb and carry models. No effect on original models.</li>
+<li>Fixed overlay key color problems that caused solid color screen on some systems. Default key color is 0xffdf for both Thief and SS2.</li>
+<li>Fixed a bug that caused saturation to be applied even when post processing was disabled.</li>
+</ul>
+
+<h3>ddfix 1.5.8</h3>
+
+<ul>
+<li>Fix for the limb model rendering bug in T2. New ini file parameter LimbZBufferFix.</li>
+<li>Replaced the ini file parameter UseCompatibleZBuffer with new parameter ZBufferBitDepth.</li>
+<li>All UI elements are now unaffected by bloom (except the minimap and some text boxes in SS2). New ini file parameter BloomUI.</li>
+<li>Replaced the ini file parameter BaseSaturation with Saturation, which is an overall saturation control affecting also bloom and the overlay. Bloom is affected by both Saturation and BloomSaturation.</li>
+<li>Fixed some crashes (with debug version) due to released FakeVidTextures being used.</li>
+<li>Fixed some crashes (with debug version) due to lost surfaces.</li>
+<li>Renovated the sample ini file. Now all the settings are commented out, and are exactly the same as the defaults in the binary.</li>
+<li>Bloom trailing no longer causes indefinite afterimages.</li>
+</ul>
+
+<h3>ddfix 1.5.7</h3>
+
+<ul>
+<li>Fixed bloom whiteout when console is active.</li>
+<li>Fixed messed up and flickering console. (Still some flickering remains if TripleBuffer=1.)</li>
+<li>New parameter LayeredOverlay. If LayeredOverlay=1, overlay is blitted to the backbuffer on every Unlock() call. This fixes the missing item model bug in SS2 inventory info.</li>
+<li>Auto replacement textures are now placed in the same directory with the texture to be replaced, and replacement extension must be .r.dds, .r.tga, .r.bmp or .r.avi. (r for "replacement")</li>
+<li>Widescreen support. Based on weak-ling's DarkWidescreen patch. Parameters gWidth and gHeight removed, information in cam.cfg is used instead. New MemAddr parameters Resolution, VertResLimit and AspectCorrection are set automatically for TG, T2 and SS2.</li>
+<li>Field of view (FOV) modification support. Based on weak-ling's DarkWidescreen patch.  New parameter FovModification. New MemAddr parameter FovModification is set automatically for TG, T2 and SS2.</li>
+<li>Item size setting (Thief only). Based on weak-ling's DarkWidescreen patch. New parameter ItemSize. New MemAddr parameter ItemSize is set automatically for TG, T2 and SS2.</li>
+<li>UseSysMemOverlay and TextOverlayColourKey as well as LayeredOverlay are set automatically for TG, T2 and SS2.</li>
+</ul>
+
+<h3>ddfix 1.5.6</h3>
+
+<ul>
+<li>Texture (pcx,gif,tga) auto replacement (uses giflib to decode gifs).</li>
+<li>Replacement texture search order changed from tga,dds,bmp,avi to dds,tga,bmp,avi.</li>
+</ul>
+
+<h3>ddfix 1.5.5</h3>
+
+<ul>
+<li>Fixed a bug with the screen turning pure white when looking at a near wall in SS2.</li>
+<li>Per-mission ini files, new parameter EnableMissionIni.</li>
+<li>New parameter EnableGamma. Set EnableGamma=0 to disable gamma correction.</li>
+<li>New postprocessing parameters BloomShift and BloomShiftRemodulate.</li>
+</ul>
+
+<h3>ddfix 1.5.4</h3>
+
+<ul>
+<li>Desktop resolution is restored when returning from Dromed game mode, even if game mode and editor are set to the same resolution.</li>
+<li>If UseCompatibleZBuffer=0, out of two different z-buffer formats the one that works is used.</li>
+<li>Texture replacement support for Dromed2 v1.18, Dromed v1.37, ShockEd v2.12. (Excluding TextureExists hook.)</li>
+</ul>
+
+<h3>ddfix 1.5.3</h3>
+
+<ul>
+<li>Fixed UseCompatibleZBuffer=0, which now means 24 bits (UseCompatibleZBuffer=1 still means 16 bits).</li>
+<li>Menu screens and videos use Flip(), and triple buffering if TripleBuffer=1. There should be no more video tearing if vsync is on. As a side effect, Fraps can record seamlessly including menu screens, loadout and videos.</li>
+<li>MenuUpdateDelay is off by default. It's not needed if vsync is on.</li>
+<li>Texture replacement support for SS2 v2.3.</li>
+</ul>
+
+<h3>ddfix 1.5.2</h3>
+
+<ul>
+<li>Anisotropic filtering for the first stage only, linear for the second stage. For the second stage (light maps) anisotropic does cause some glitches after all.</li>
+<li>Triple buffering.</li>
+<li>FlipInterval option. Translates directly to DDFLIP_INTERVAL* flag in the Flip() call.</li>
+<li>MenuUpdateDelay option.</li>
+</ul>
+
+<h3>ddfix 1.5.1</h3>
+
+<ul>
+<li>PrintScreen works for menu screens now also.</li>
+<li>Added setting of maxanisotropy for the second texture stage.</li>
+<li>Frame rate limiter.</li>
+<li>Revisited menu screen update delay. Supports T2 and TG.</li>
+<li>New ini file option for setting the menu screen aspect ratio.</li>
+<li>Texture replacement support for TG v1.37 (T2 v1.18 was already supported). Removed Thief2Extensions option and added new TextureReplacement option.</li>
+<li>New ini file section MemAddr allows direct setting of the memory addresses to be patched.</li>
+</ul>
+
+<h3>ddfix 1.5.0</h3>
+
+<ul>
+<li>Fog. SiO2's idea: fog requires w-friendly projection transform.</li>
+<li>Added restoring the filter functions for the second texture stage after post processing.</li>
+</ul>
+
+<h3>ddfix 1.3.11.4</h3>
+
+<ul>
+<li>Added post processing options: (de)saturation, bloom.</li>
+</ul>
+
+<h3>ddfix 1.3.11.3</h3>
+
+<ul>
+<li>Introduced some delay in the menu / loadout / readable screen update to lower GPU temperature and to slow down object rotation in the loadout screen.</li>
+</ul>
+
+<h3>ddfix 1.3.11.2</h3>
+
+<ul>
+<li>Added support for Avi textures. The usual size restrictions apply. Use any VfW combatible codec that decodes into RGB.</li>
+</ul>
+
+<h3>ddfix 1.3.11.1</h3>
+
+<ul>
+<li>Fixed the mipmap problems
+with the replacements to some textures, such as grass
+textures (NTEX), green water, and others.</li>
+<li>Removed the "You seem to be trying to use ddfix 1.3.11 or newer with an exe patched to use 1.3.10 or older" check.</li>
+</ul>
+
+<h2>External Components</h2>
+
+<h3>giflib</h3>
+
+<blockquote><pre>
+The GIFLIB distribution is Copyright (c) 1997  Eric S. Raymond
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+</pre></blockquote>
+
+</td></tr>
+</table>
+
+</center>
+</body></html>

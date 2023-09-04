@@ -1,0 +1,184 @@
+A thief 2 mod to fix issues with the nvidia 8000 series of graphics cards. It's only been tested on windows xp SP2 with an 8800 GTS, the 169.21 drivers and the non copy protected v1.18 of thief 2. Results on anything else may vary.
+
+v1.3.11b
+
+http://timeslip.chorrol.com
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XX Installation instruction: XX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+XX
+XX Manual version:
+XX
+
+Extract ddfix.dll and ddfix.ini to the same directory as thief2.exe
+Open thief2.exe in a hex editor, locate the first instance of 'DDRAW.DLL' and change it to read 'DDFIX.DLL'. (This is at offset 0x27996C in my version of thief, but may vary)
+
+open ddfix.ini and change the screen resolution there to match what you want to use in game. (Using your desktop resolution is recommended, but anything will do as long as it's 800x600 or above.) If required, you can also turn on the duel core and video fixes here.
+
+Open cam.cfg and edit the game_screen_size line to match the resolution set in ddfix.ini
+
+
+XX
+XX GUI version:
+XX
+
+Extract ddfixGUI.exe, ddfixGUI.dll, ddfix.dll and ddfix.ini to the same directory as thief2.exe. Run ddfixGUI.exe, click 'apply patch' and choose the resolution you want.
+
+On windows vista, the GUI must be started with admin rights to avoid issues when trying to patch thief2.exe. (Use '-noadmincheck' as a command line argument to disable this check.)
+
+You can use '-createdefaultini' to replace ddfix.ini with an unedited original copy. (This will also be done automatically if ddfix.ini doesn't exist.)
+
+XXXXXXXXXXXXX
+XX Issues: XX
+XXXXXXXXXXXXX
+
+This fix breaks thief's normal method of taking screenshots. You can take screenshots using ddfix by hitting printscreen.
+
+XXXXXXXXXXXXXX
+XX Changes: XX
+XXXXXXXXXXXXXX
+
+1.3.11
+Removed the custom resolution support for thief 2 (Please use the widescreen patch instead.)
+The GUI no longer offers unsupported resolutions
+The GUI now checks that the resolution in cam.cfg matches that given in ddfix.ini on startup
+The GUI won't automatically reset the resolution back to 800x600 if you run the GUI after using the widescreen patch
+Improved error messages in ddfix
+When using the non 4:3 resolutions with the widescreen patch, menu screens are adjusted to preserve their aspect ratio. (From Weak-ling)
+
+1.3.10
+bmp's used as replacement textures are no longer vertically flipped
+When using .tga's for replacement textures, ddfix now respects the vertical/horizontal flip flags.
+Added an option to manually set the refresh rate
+ddfix will disable its texture loader if the res\ddfix directory is missing to improve performance
+
+1.3.9b
+Fixed custom resolution support that got broken in 1.3.9
+
+1.3.9
+Added an option to change the path from which ddfix loads replacement textures
+Readded the anisotropic filtering option
+Fixed a possible crash when used with SS2 or Thief 1
+
+1.3.8
+Added an option to disable the windows key while thief is running
+Object textures can now be replaced as well as world textures
+
+1.3.7
+Fixed the GUI looking for replacement textures in /fam if trying to replace more than one texture
+Fixed issue with replacing textures for which thief does not generate its own mipmaps
+
+1.3.6
+Added support to the GUI for modifing gif and bmp textures, instead of just pcx
+The GUI checks for the existence of bmps and dds's before warning about missing replacement textures
+Removed gamma option again (It didn't work...)
+Performance improvements when overriding multiple textures
+
+1.3.5
+Added a new gamma compatibility option
+Added an ini option to disable features which only work on Thief 2
+Fixed an issue with replacement textures turning up in unexpected places
+Fixed an issue with replacement textures being lost on alt-tab
+
+1.3.4
+Adds support for normally unsupported screen resolutions. (1280x960, etc.)
+
+1.3.3
+New file type supported: dds (Must contain rgb data and be either 24 or 32 bit)
+ddfix now overrides thief's normal mipmap handling for replaced textures, fixing the aliasing problem
+
+1.3.2
+GUI now creates new files with a .override extension instead of overwriting the original pcx
+New file types supported for replacement textures. You can now use 24 or 32 bit tga's or bmp's.
+Improved checking of .tga's so that ddfix doesn't try loading something it doesn't know how to
+Fixed the sharpened textures issue that got reintroduced in 1.3
+
+1.3.1
+Fixed GUI not creating backups
+The GUI can now batch modify a whole pcx family
+Fixed an issue with tga's containing an Image ID field getting their colour channels flipped
+Textures are now correctly freed from system memory at the end of each level
+File paths for replacement textures can now contain characters other than a-z, 0-9 and '\'.
+
+1.3.0
+Added support for ddfix to load and display full 32 bit textures in place of any pcx. (Thief 2 only)
+
+1.2.7
+Possible fix for the crash on exit
+GUI supports thief 1
+
+1.2.6
+Added a new compatibility setting for nvidia users trying to play system shock 2
+
+1.2.5
+Tweaked colour key behaviour
+Tweaked screenshots to improve speed
+
+1.2.4
+Fixed the stars fix so that it no longer causes objects in the distance to flicker
+Added an option to configure the colour key for the in game text overlay. (For SS2)
+Fixed screenshots sometimes failing, resulting in a 54 byte bmp
+
+1.2.3
+Setting UseCompatibleZBuffer to 0 should no longer crash ATi cards
+
+1.2.2
+Fixed crashes on ATi graphics cards
+Added two options to ddfix.ini to make the recent ATi and vista fixes optional
+
+1.2.1
+Fixed black menu screens on vista
+GUI supports SS2
+
+1.2.0
+Switched from DX 9 down to DX6. Many bugs are fixed as a result, (health potions, black screen after alt-tabbing, missing fog, pixelated textures and corrupted borders,) but some features have been lost. (Screenshots are an order of magnitude slower, and no longer give a choice of formats. There is no longer an option to use AA or AF.)
+
+1.1.1
+On vista with UAC enabled, the GUI will run as an admin proces to avoid security errors when patching/restoring thief2.exe
+The GUI no longer lets you choose widescreen resolutions. It probably still displays a few options that thief 2 can't actually use though.
+Hitting scroll lock on a menu or while a movie is playing will toggle the vwait menu fix. Hitting it in game still toggles the text overlay.
+Performance improvements
+
+1.1.0
+Removed the HighQualityTextures option, because they weren't
+Reduced the stuttering of movies slightly
+Fixed most problems related to using WindowFix=0
+
+1.0.8
+Fixed a bug that could cause a crash as soon as a save was loaded
+The DisableOverlay option can be toggled in game with the scroll lock key
+
+1.0.7
+Fixed vwait messing up menus
+Removed the limitfps option, since vwait does a much better job
+Removed the particle test fix, because it didn't
+Added an option to disable in game text (gives a 1.5 to 10x performance boost)
+
+1.0.6
+Fixed an issue with alt-tabbing introduced in 1.0.4
+
+
+1.0.5
+To allow the use of a GUI without worrying about vista's UAC getting in the way, ddfix.ini will now be loaded from '%AppData%\Thief2\' if it exists. If it does not, it will continue to be loaded from thief2.exe's local directory.
+
+1.0.4
+Added an option to register lgvid.ax when thief is started up
+Added an option to disable anisotropic filtering
+Added a few other misc options
+Made a few possible performance tweaks
+
+1.0.3
+Added a HighQualityTextures option to force 32 bit textures
+Added a printscreen option
+
+1.0.2
+Fixed alt-tabbing in fullscreen mode.
+Fixed flickering black textures when limitfps or fullscreen mode were turned on
+Partially fixed texture borders (The black line around the sky is gone, large objects viewed side on are still buggy)
+Changed default settings: fullscreen mode is now on
+
+1.0.1
+Fixed a typo in ddfix.ini
+Added a better limit fps option than vwait, which tended to screw up the menus somewhat.
